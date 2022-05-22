@@ -18,19 +18,88 @@
             color: white;
             font:
             }
+
+        .banner{
+            width: 100%;
+            background-color: rgba(255, 0, 0, 0.4);
+        }
         .title{
             font-family: 'Permanent Marker', cursive;
             font-size: 126px;
-            width: 100%;
-            background-color: rgba(255, 0, 0, 0.4);
+
             }
+        .img-container{
+            position: absolute;
+            left: 150px;
+            top: 700px;
+        }
+
+        .img{
+            opacity: 0;
+        }
+
+        .show{
+            opacity: 0.8;
+            -webkit-transition: opacity 4s ease-in-out;
+              -moz-transition: opacity 4s ease-in-out;
+              -o-transition: opacity 4s ease-in-out;
+              transition: opacity 4s ease-in-out
+        }
+
+        .hide{
+            opacity: 0;
+            -webkit-transition: opacity 4s ease-in-out;
+              -moz-transition: opacity 4s ease-in-out;
+              -o-transition: opacity 4s ease-in-out;
+              transition: opacity 4s ease-in-out
+        }
+
         </style>
 </head>
 <body>
-<div class="title ps-5">
-    <p class="text-right">Asep Stone
-</div>
 
+<div class="row banner">
+    <div class="col-9">
+        <div class="title ps-5">
+            <p class="text-right">Asep Stone
+        </div>
+    </div>
+    <div class="col-3 align-self-end pb-2">
+        <span>contact@asep-stone.com</span>
+    </div>
+</div>
+<script>
+    const images = ['blue','fuscia','mustard','red','turqoise'];
+
+    window.setInterval(addImage, r(5000,1000));
+
+    function addImage(){
+        let name = images.shift();
+        images.push(name);
+        let img = createElementFromHTML(`<img class='img' src='media/color-${name}.png' width='300px'>`)
+        img.style = `position: absolute; top: ${r(100,500)+300}px; left:${r(100,1000)}px; width:${r(100,500)}px`;
+        document.body.append(img);
+        setTimeout(()=>{
+            img.classList.add('show');
+        }, 100);
+        setTimeout(()=>{
+            img.classList.add('hide');
+        }, 6000);
+    }
+
+    function createElementFromHTML(htmlString) {
+      var div = document.createElement('div');
+      div.innerHTML = htmlString.trim();
+
+      // Change this to div.childNodes to support multiple top-level nodes.
+      return div.firstChild;
+    }
+
+    function r(min, max) { // min and max included
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+</script>
 
 </body>
 </html>
