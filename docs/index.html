@@ -98,6 +98,9 @@
         setTimeout(()=>{
             img.classList.add('hide');
         }, 8000);
+        setTimeout(()=>{
+            document.body.removeChild(img);
+        }, 15000);
     }
 
     function createElementFromHTML(htmlString) {
