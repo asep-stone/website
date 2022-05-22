@@ -86,13 +86,13 @@
         images.push(name);
         const screenWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;
         const top = r(50,800)+200;
-        const width = r(100,500);
+        const width = r(200,500);
         const left = r(20, screenWidth - width);
 
         let img = createElementFromHTML(`<img class='img' src='media/${name}.png' width='300px'>`)
         img.style = `position: absolute; top: ${top}px; width:${width}px; left:${left}px;`;
         document.body.append(img);
-        
+
         setTimeout(()=>{
             img.classList.add('show');
         }, 100);
