@@ -16,7 +16,8 @@
             -o-background-size: cover;
             background-size: cover;
             color: white;
-            font:
+            overflow-y: hidden;
+            overflow-x: hidden;
             }
 
         .banner{
@@ -25,7 +26,7 @@
         }
         .title{
             font-family: 'Permanent Marker', cursive;
-            font-size: 126px;
+            font-size: 80px;
 
             }
         .img-container{
@@ -39,7 +40,7 @@
         }
 
         .show{
-            opacity: 0.8;
+            opacity: 0.6;
             -webkit-transition: opacity 4s ease-in-out;
               -moz-transition: opacity 4s ease-in-out;
               -o-transition: opacity 4s ease-in-out;
@@ -59,24 +60,26 @@
 <body>
 
 <div class="row banner">
-    <div class="col-9">
-        <div class="title ps-5">
+    <div class="col-12">
+        <div class="title ms-4">
             <p class="text-right">Asep Stone
         </div>
-    </div>
-    <div class="col-3 align-self-end pb-2">
-        <span>contact@asep-stone.com</span>
+        <div class="ms-5 mb-3">contact@asep-stone.com</div>
     </div>
 </div>
 <script>
-    const images = ['blue','fuscia','mustard','red','turqoise'];
+    const images = ['color-blue','bw-away','color-fuscia','color-mustard','bw-hungry','color-red','color-turqoise'];
 
-    window.setInterval(addImage, r(5000,1000));
+    setTimeout(()=>{
+            addImage();
+        }, 1000);
+
+    window.setInterval(addImage, r(3000,8000));
 
     function addImage(){
         let name = images.shift();
         images.push(name);
-        let img = createElementFromHTML(`<img class='img' src='media/color-${name}.png' width='300px'>`)
+        let img = createElementFromHTML(`<img class='img' src='media/${name}.png' width='300px'>`)
         img.style = `position: absolute; top: ${r(100,500)+300}px; left:${r(100,1000)}px; width:${r(100,500)}px`;
         document.body.append(img);
         setTimeout(()=>{
@@ -84,7 +87,7 @@
         }, 100);
         setTimeout(()=>{
             img.classList.add('hide');
-        }, 6000);
+        }, 5000);
     }
 
     function createElementFromHTML(htmlString) {
