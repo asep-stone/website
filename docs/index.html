@@ -40,7 +40,7 @@
         }
 
         .show{
-            opacity: 0.6;
+            opacity: 0.7;
             -webkit-transition: opacity 4s ease-in-out;
               -moz-transition: opacity 4s ease-in-out;
               -o-transition: opacity 4s ease-in-out;
@@ -74,7 +74,12 @@
             addImage();
         }, 1000);
 
-    window.setInterval(addImage, r(3000,8000));
+    (function loop() {
+        setTimeout(function() {
+                addImage();
+                loop();
+        }, r(3000,5000));
+    }());
 
     function addImage(){
         let name = images.shift();
@@ -87,7 +92,7 @@
         }, 100);
         setTimeout(()=>{
             img.classList.add('hide');
-        }, 5000);
+        }, 8000);
     }
 
     function createElementFromHTML(htmlString) {
