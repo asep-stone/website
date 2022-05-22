@@ -84,8 +84,9 @@
     function addImage(){
         let name = images.shift();
         images.push(name);
+        const width = (window.innerWidth > 0) ? window.innerWidth : screen.width -300;
         let img = createElementFromHTML(`<img class='img' src='media/${name}.png' width='300px'>`)
-        img.style = `position: absolute; top: ${r(100,500)+300}px; left:${r(100,1000)}px; width:${r(100,500)}px`;
+        img.style = `position: absolute; top: ${r(100,500)+300}px; left:${r(20,width)}px; width:${r(100,500)}px`;
         document.body.append(img);
         setTimeout(()=>{
             img.classList.add('show');
